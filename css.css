@@ -1,0 +1,35 @@
+body{
+    font-family: Comic Sans MS;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+table, th, td {
+    border-style: solid;
+}
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+tr:hover {
+    background-color: #969696;
+}
+th { 
+    background-color: #666666;
+    color: white;
+} 
+input[type=text]{
+    width: 25%;
+    outline: 0;
+    font:1.1em Comis Sans MS;
+}
+input[type=submit]{
+    margin: 15px 50px 15px 0px;
+    border-radius: 8px;
+    padding: 10px 25px 10px 25px;
+    font:1.1em Comis Sans MS;
+}
