@@ -1,12 +1,18 @@
 <?php
 
 class db {
-    
+    /**
+     * @var ve které je uložené spojení 
+     */
     private static $pripojeni;
     
     
    /**
-    * 
+     * @param string host host name nebo IP adresa
+     * @param string name prihlasovaci jmeno
+     * @param string heslo prihlasovaci heslo
+     * @param string databaze jmeno databaze ke ktere se pripojujeme
+     * @return do $pripojeni se ulozi pripojeni k databazi a nastavi se pristup k datum na utf8
     */ 
    public static function connect (){
        $host = 'localhost';
@@ -17,12 +23,21 @@ class db {
        mysqli_set_charset(self::$pripojeni, "utf8");
    }
    
+   /**
+    * @param dotaz promenna ve kterem jsou ulozena data po selectu
+    * @param array vysledek je pole ve kterém jsou uložena data z promene dotaz
+    * @return tato funkce vraci promennou vysledek
+    */
+    
    public static function dotaz(){
        $dotaz = mysqli_query(self::$pripojeni, "SELECT l.Id, Jmeno, Prijmeni, Stat, Nazev FROM lide AS l LEFT JOIN artist AS a ON l.Artist = a.Id");
        $vysledek = mysqli_fetch_all($dotaz, MYSQLI_ASSOC); 
        return $vysledek;
    }
    
+   /**
+    * 
+    */
    public static function vypis(){
        echo ("<table border='1'><tr><th>Id</th><th>Jméno</th><th>Přijmení</th><th>Stát</th><th>Umělecké jméno / Skupina</th><th><form action=form.php method='POST'><input type='image' src='icons/new.png' style='width: 30px; height: 30px'></form></th></tr>");
        $i = 0;
